@@ -1,0 +1,56 @@
+﻿@page "{id?}"
+@model AAS.Pages.Transactions.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Transaction</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].BankAccount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Transaction) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                £@Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                    @{
+                        string text;
+                        if (item.BankAccount.GetType() == typeof(AAS.Models.CurrentAccount)){
+                            text = "Current Account";
+                        } else if (item.BankAccount.GetType() == typeof(AAS.Models.DepositAccount)){
+                            text = "Deposit Account";
+                        } else {
+                            text = "Long-Term Deposit Account";
+                        }
+                    }
+                @text
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
