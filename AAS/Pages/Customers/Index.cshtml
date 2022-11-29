@@ -14,9 +14,15 @@
     </p>
 </form>
 
-<p>
-    <a asp-page="Create">Create Customer</a>
-</p>
+@{
+    if (HttpContext.Session.GetString("employeePermission") != "vpn")
+    {
+    <p>
+                <a asp-page="Create">Create Customer</a>
+    </p>
+    }
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -57,9 +63,16 @@
                 @Html.DisplayFor(modelItem => item.Telephone)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CustomerId">Delete</a>
+                @{
+                    if (HttpContext.Session.GetString("employeePermission") == "vpn"){
+                        <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a>
+                    }
+                    else {
+                        <a asp-page="./Edit" asp-route-id="@item.CustomerId">Edit |</a>
+                        <a asp-page="./Details" asp-route-id="@item.CustomerId"> Details |</a> 
+                        <a asp-page="./Delete" asp-route-id="@item.CustomerId"> Delete</a>
+                    }
+                }
             </td>
         </tr>
 }

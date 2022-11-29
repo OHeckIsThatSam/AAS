@@ -91,11 +91,27 @@ namespace AAS.Models
                     new Employee
                     {
                         Username = "admin",
-                        Password = "admin"
+                        Password = "admin",
+                        Permission = "admin"
+                    });
+                context.Employees.Add(
+                    new Employee
+                    {
+                        Username = "branch",
+                        Password = "branch",
+                        Permission = "branch"
+                    });
+                context.Employees.Add(
+                    new Employee
+                    {
+                        Username = "vpn",
+                        Password = "vpn",
+                        Permission = "vpn"
                     });
                 context.SaveChanges();
             }
         }
+
         private static string RandomNumbers(int n)
         {
             string number = "";

@@ -29,6 +29,7 @@ namespace AAS.Pages.Customers
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (HttpContext.Session.GetString("employeeId") == null) return RedirectToPage("../Login");
+            if (HttpContext.Session.GetString("employeePermission") == "vpn") return RedirectToPage("../Customers/Index");
 
             if (id == null || _context.Customers == null)
             {

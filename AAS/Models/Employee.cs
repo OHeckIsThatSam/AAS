@@ -15,6 +15,9 @@ namespace AAS.Models
         public string Password { get; set; }
 
         [ValidateNever]
+        public string Permission { get; set; }
+
+        [ValidateNever]
         public List<Log> Logs { get; set; }
     }
 }

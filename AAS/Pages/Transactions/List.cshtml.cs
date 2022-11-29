@@ -30,20 +30,26 @@ namespace AAS.Pages.Transactions
 
             if (_context.Transactions != null && id != null)
             {
-                Customer customer = _context.Customers.Where(c => c.CustomerId == id).First();
+                Customer customer = _context.Customers.Where(
+                    c => c.CustomerId == id).First();
 
                 if (customer == null) Response.Redirect("../Customers");
 
-                var bankAccounts = _context.BankAccount.Where(c => c.CustomerId == id).ToList();
+                var bankAccounts = _context.BankAccount.Where(
+                    c => c.CustomerId == id).ToList();
 
                 Transaction = new List<Transaction>();
 
                 foreach (var bankAccount in bankAccounts)
                 {
-                    Transaction.AddRange(_context.Transactions.Where(t => t.BankAccountID == bankAccount.BankAccountID));
+                    Transaction.AddRange(_context.Transactions.Where(
+                        t => t.BankAccountID == bankAccount.BankAccountID));
                 }
-                Transaction = Transaction.OrderByDescending(t => t.TransactionDate).ToList();
-                Transaction = Transaction.Skip(Math.Max(0, Transaction.Count - 10)).ToList();
+                Transaction = Transaction.OrderByDescending(
+                    t => t.TransactionDate).ToList();
+
+                Transaction = Transaction.Skip(
+                    Math.Max(0, Transaction.Count - 10)).ToList();
             }
             else
             {

@@ -24,7 +24,7 @@
             £@Html.DisplayFor(model => model.LongTermDepositAccount.Balance)
         </dd>
         @{
-            if (!Model.LongTermDepositAccount.IsActive) 
+            if ((!Model.LongTermDepositAccount.IsActive) && HttpContext.Session.GetString("employeePermission") != "vpn")
             {
                 <dt class="col-sm-2">
                     Account not active

@@ -26,6 +26,7 @@ namespace AAS.Pages.Cards
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (HttpContext.Session.GetInt32("employeeId") == null) return RedirectToPage("../Login");
+            if (HttpContext.Session.GetString("employeePermission") == "vpn") return RedirectToPage("../Customers/Index");
 
             if (id == null || _context.Cards == null)
             {

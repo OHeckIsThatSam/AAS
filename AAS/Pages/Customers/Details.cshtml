@@ -49,6 +49,10 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Customer?.CustomerId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    @{
+        if(HttpContext.Session.GetString("employeePermission") != "vpn") {
+            <a asp-page="./Edit" asp-route-id="@Model.Customer?.CustomerId">Edit |</a>
+        }
+    }
+    <a asp-page="./Index"> Back to List</a>
 </div>

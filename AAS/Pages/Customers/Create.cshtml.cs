@@ -22,6 +22,7 @@ namespace AAS.Pages.Customers
         public IActionResult OnGet()
         {
             if (HttpContext.Session.GetInt32("employeeId") == null) return RedirectToPage("../Login");
+            if (HttpContext.Session.GetString("employeePermission") == "vpn") return RedirectToPage("../Customers/Index");
             return Page();
         }
 

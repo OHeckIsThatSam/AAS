@@ -24,7 +24,8 @@
             £@Html.DisplayFor(model => model.DepositAccount.Balance)
         </dd>
         @{
-            if (!Model.DepositAccount.IsActive) {
+            if ((!Model.DepositAccount.IsActive) && HttpContext.Session.GetString("employeePermission") != "vpn")
+            {
                 <dt class="col-sm-2">
                     Account not active
                 </dt>

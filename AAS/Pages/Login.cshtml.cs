@@ -55,7 +55,7 @@ namespace AAS.Pages
             }
 
             HttpContext.Session.SetInt32("employeeId", employee.EmployeeId);
-            HttpContext.Session.SetString("employeeUsername", employee.Username);
+            HttpContext.Session.SetString("employeePermission", employee.Permission);
 
             return RedirectToPage("/Customers/Index");
         }

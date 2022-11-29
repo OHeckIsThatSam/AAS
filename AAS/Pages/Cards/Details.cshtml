@@ -34,7 +34,7 @@
             @Model.Card.ExpiryDate.ToString("MM/yy")
         </dd>
         @{
-            if (!Model.Card.IsActive)
+            if (!Model.Card.IsActive && HttpContext.Session.GetString("employeePermission") != "vpn")
             {
                         <dt class="col-sm-2">
                             Card is deactivated

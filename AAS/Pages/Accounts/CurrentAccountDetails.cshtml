@@ -48,7 +48,12 @@
                     <input type="hidden" name="id" value="@Model.CurrentAccount.BankAccountID"/>
                     <label for="Overdraft">Credit score = @creditScore (Max Overdraft = @max): </label>
                     <input type="number" id="Overdraft" asp-for="Overdraft" min="1" max="@max">
-                    <input type="submit" value="Set Overdraft" />
+                    @{
+                        if (HttpContext.Session.GetString("employeePermission") != "vpn")
+                        {
+                            <input type="submit" value="Set Overdraft" />
+                        }
+                    }
            </form>
         </dd>
     </dl>
