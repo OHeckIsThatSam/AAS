@@ -27,12 +27,21 @@ namespace AAS.Pages
         [BindProperty]
         public Employee Employee { get; set; }
 
+        [BindProperty]
+        public string LoginType { get; set; }
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+
+            if (LoginType == "default")
+            {
+                ModelState.AddModelError("LoginError", "You are not authorised to login.");
                 return Page();
             }
 
