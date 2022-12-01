@@ -50,6 +50,14 @@ namespace AAS.Models
                     Address = "Cantor College, Arundel Street",
                     Telephone = "22222222222"
                 });
+                customers.Add(new Customer
+                {
+                    FirstName = "Imraan",
+                    LastName = "Khan",
+                    Email = "imraan@example.net",
+                    Address = "Cantor College, Arundel Street",
+                    Telephone = "33333333333"
+                });
 
                 context.Customers.AddRange(customers);
 
