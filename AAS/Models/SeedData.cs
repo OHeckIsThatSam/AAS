@@ -67,7 +67,7 @@ namespace AAS.Models
                 {
                     context.Cards.Add (new Card
                     {
-                        Number = RandomNumbers(11),
+                        Number = RandomNumbers(16),
                         SecurityCode = RandomNumbers(3),
                         ExpiryDate = DateTime.Today.AddYears(3),
                         PIN = RandomNumbers(4),

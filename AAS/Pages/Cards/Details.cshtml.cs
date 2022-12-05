@@ -45,11 +45,24 @@ namespace AAS.Pages.Cards
                 if (Activate == "activate")
                 {
                     Card.IsActive = true;
+                    Card.PIN = RandomNumbers(4);
                     _context.Cards.Update(Card);
                     await _context.SaveChangesAsync();
                 }
             }
             return Page();
+        }
+
+        private static string RandomNumbers(int n)
+        {
+            string number = "";
+            Random random = new();
+
+            for (int i = 0; i < n; i++)
+            {
+                number += random.Next(10).ToString();
+            }
+            return number;
         }
     }
 }
