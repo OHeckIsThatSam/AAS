@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Context") ?? throw new InvalidOperationException("Connection string 'Context' not found.")));
 builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromMinutes(10);
+    options.IdleTimeout = TimeSpan.FromMinutes(5);
 });
 
 var app = builder.Build();
